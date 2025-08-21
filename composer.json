@@ -1,5 +1,5 @@
 {
-    "name": "dhl/sdk-api-bcs-returns",
+    "name": "cartware/sdk-api-bcs-returns",
     "description": "DHL Paket Retoure API SDK",
     "license": "MIT",
     "keywords": [
@@ -7,13 +7,13 @@
         "sdk",
         "DHL"
     ],
-    "homepage": "https://entwickler.dhl.de/group/ep/wsapis/retouren",
+    "homepage": "https://cartware.de",
     "authors": [
         {
-            "email": "plugins@netresearch.de",
-            "name": "Netresearch DTT GmbH",
-            "role": "Manufacturer",
-            "homepage": "https://www.netresearch.de/"
+            "email": "alexander.buch@cartware.de",
+            "name": "Cartware GmbH",
+            "role": "Fork Maintainer",
+            "homepage": "https://www.cartware.de/"
         }
     ],
     "require": {
