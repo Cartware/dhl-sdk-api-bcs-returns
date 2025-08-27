@@ -22,7 +22,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 class ReturnLabelService implements ReturnLabelServiceInterface
 {
-    private const OPERATION_BOOK_LABEL = 'returns/';
+    private const OPERATION_BOOK_LABEL = 'orders';
 
     /**
      * @var ClientInterface
@@ -69,6 +69,7 @@ class ReturnLabelService implements ReturnLabelServiceInterface
 
         try {
             $payload = $this->serializer->encode($returnOrder);
+
             $stream = $this->streamFactory->createStream($payload);
 
             $httpRequest = $this->requestFactory->createRequest('POST', $uri)->withBody($stream);
@@ -87,9 +88,9 @@ class ReturnLabelService implements ReturnLabelServiceInterface
 
         $responseData = $this->serializer->decode($responseJson);
 
-        $shipmentNumber = $responseData['shipmentNumber'] ?: '';
-        $labelData = $responseData['labelData'] ?? '';
-        $qrLabelData = $responseData['qrLabelData'] ?? '';
+        $shipmentNumber = $responseData['shipmentNo'] ?: '';
+        $labelData = $responseData['label']['b64'] ?? '';
+        $qrLabelData = $responseData['qrLabel']['b64'] ?? '';
         $routingCode = $responseData['routingCode'] ?? '';
 
         return new Confirmation($shipmentNumber, $labelData, $qrLabelData, $routingCode);

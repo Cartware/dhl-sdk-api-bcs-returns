@@ -22,7 +22,7 @@ class ReturnOrder implements \JsonSerializable
     /**
      * @var SimpleAddress
      */
-    private $senderAddress;
+    private $shipper;
 
     /**
      * @var string|null
@@ -47,7 +47,7 @@ class ReturnOrder implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $telephoneNumber;
+    private $phone;
 
     /**
      * @var float|null
@@ -69,7 +69,7 @@ class ReturnOrder implements \JsonSerializable
         SimpleAddress $senderAddress
     ) {
         $this->receiverId = $receiverId;
-        $this->senderAddress = $senderAddress;
+        $this->shipper = $senderAddress;
     }
 
     public function setCustomerReference(?string $customerReference): self
@@ -100,9 +100,9 @@ class ReturnOrder implements \JsonSerializable
         return $this;
     }
 
-    public function setTelephoneNumber(?string $telephoneNumber): self
+    public function setPhone(?string $phone): self
     {
-        $this->telephoneNumber = $telephoneNumber;
+        $this->phone = $phone;
 
         return $this;
     }

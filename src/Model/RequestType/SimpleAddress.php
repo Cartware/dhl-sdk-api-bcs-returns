@@ -18,17 +18,17 @@ class SimpleAddress implements \JsonSerializable
     /**
      * @var string
      */
-    private $streetName;
+    private $addressStreet;
 
     /**
      * @var string
      */
-    private $houseNumber;
+    private $addressHouse;
 
     /**
      * @var string
      */
-    private $postCode;
+    private $postalCode;
 
     /**
      * @var string
@@ -58,9 +58,9 @@ class SimpleAddress implements \JsonSerializable
         string $city
     ) {
         $this->name1 = $name1;
-        $this->streetName = $streetName;
-        $this->houseNumber = $houseNumber;
-        $this->postCode = $postCode;
+        $this->addressStreet = $streetName;
+        $this->addressHouse = $houseNumber;
+        $this->postalCode = $postCode;
         $this->city = $city;
     }
 
