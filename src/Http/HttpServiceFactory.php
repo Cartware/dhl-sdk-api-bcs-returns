@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Dhl\Sdk\Paket\Retoure\Http;
 
+use Dhl\Sdk\Paket\Retoure\Http\Authentication\OAuth2;
 use Dhl\Sdk\Paket\Retoure\Api\Data\AuthenticationStorageInterface;
 use Dhl\Sdk\Paket\Retoure\Api\ReturnLabelServiceInterface;
 use Dhl\Sdk\Paket\Retoure\Api\ServiceFactoryInterface;
@@ -47,13 +48,23 @@ class HttpServiceFactory implements ServiceFactoryInterface
         LoggerInterface $logger,
         bool $sandboxMode = false
     ): ReturnLabelServiceInterface {
-        $appAuth = new BasicAuth($authStorage->getApplicationId(), $authStorage->getApplicationToken());
-        $userAuth = base64_encode($authStorage->getUser() . ':' . $authStorage->getSignature());
+//        $appAuth = new BasicAuth($authStorage->getApplicationId(), $authStorage->getApplicationToken());
+//        $userAuth = base64_encode($authStorage->getUser() . ':' . $authStorage->getSignature());
         $headers = [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'DPDHL-User-Authentication-Token' => $userAuth,
+//            'DPDHL-User-Authentication-Token' => $userAuth,
         ];
+
+        $appAuth = new OAuth2(
+            $authStorage->getUser(),
+            $authStorage->getSignature(),
+            $authStorage->getApplicationId(),
+            $authStorage->getApplicationToken(),
+            $sandboxMode,
+            $this->httpClient,
+            $logger
+        );
 
         $client = new PluginClient(
             $this->httpClient,

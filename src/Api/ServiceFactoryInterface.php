@@ -19,8 +19,11 @@ use Psr\Log\LoggerInterface;
  */
 interface ServiceFactoryInterface
 {
-    public const BASE_URL_PRODUCTION = 'https://cig.dhl.de/services/production/rest';
-    public const BASE_URL_SANDBOX = 'https://cig.dhl.de/services/sandbox/rest';
+//    public const BASE_URL_PRODUCTION = 'https://cig.dhl.de/services/production/rest';
+//    public const BASE_URL_SANDBOX = 'https://cig.dhl.de/services/sandbox/rest';
+
+    public const BASE_URL_PRODUCTION = 'https://api-eu.dhl.com/parcel/de/shipping/returns/v1';
+    public const BASE_URL_SANDBOX = 'https://api-sandbox.dhl.com/parcel/de/shipping/returns/v1';
 
     /**
      * Create the service able to perform return shipment label requests.
